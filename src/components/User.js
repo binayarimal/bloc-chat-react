@@ -12,7 +12,7 @@ signOut(){
 componentDidMount(){
   this.props.firebase.auth().onAuthStateChanged( user => {
   this.props.setUser(user);
-  console.log(this.props.user)
+  
 });}
 
 
