@@ -31,7 +31,8 @@ class MessageList extends Component {
       roomId:this.props.activeRoom.key,
       username:this.Messenger(),
       sentat:this.props.firebase.database.ServerValue.TIMESTAMP,
-    })
+    });
+    this.setState({newMessage:""})
   }
 
   render(){

@@ -12,20 +12,23 @@ signOut(){
 componentDidMount(){
   this.props.firebase.auth().onAuthStateChanged( user => {
   this.props.setUser(user);
-  
+
 });}
 
 
 display(){
   if(this.props.user !== null ){return this.props.user.displayName} else{return "Guest"}
 }
-
+buttonClick(e){
+  if (this.props.user === null){
+   this.signIn()} else{
+   this.signOut()}
+}
 
   render(){
     return(
     <section>
-    <input type ="button" value ="Sign In"onClick={()=>this.signIn()}/>
-    <input type ="button" value = "Sign Out"onClick={()=>this.signOut()}/>
+    <input type ="button" value={(this.props.user === null)? "Sign In":"SignOut"}onClick={(e)=>this.buttonClick(e)}/>
     <div>{this.display()}</div>
 
     </section>)
